@@ -4,7 +4,9 @@
   "description": "This is the challenge for march's first week. we must build a clock application with three functions:",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "webpack --watch",
+    "dev": "webpack-dev-server --hot --inline"
   },
   "repository": {
     "type": "git",
