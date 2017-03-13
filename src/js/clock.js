@@ -1,43 +1,44 @@
 export default function Clock() {
     var d  = new Date();
-    var h  = d.getHours();
-    var m  = d.getMinutes();
-    var s  = d.getSeconds();
+    var hour  = d.getHours();
+    var minutes  = d.getMinutes();
+    var seconds  = d.getSeconds();
     var ms = d.getMilliseconds();
 
-    console.log(h + ':' + m + ':' + s);
+    setTimeout(secondCounter, 1); 
 
-
-    setTimeout(fastSeconds, 1); 
-
-    function fastMilliseconds() {
+    function getRemain() {
     ms++; 
     if (ms >= 1000) {
-        fastSeconds();
+        secondCounter();
         ms = 0;
-    } else {
-        setTimeout(fastMilliseconds, 1);
-    }
-    }
-
-    function fastSeconds() {
-        s++
-        if (s >= 60) {
-            fastMinutes();
-            s = 0
-        } else {
-            setTimeout(fastSeconds, 1000)
-            console.log(s);
+        } 
+    else {
+        setTimeout(getRemain, 1);
         }
     }
 
-    function fastMinutes() {
-        m++
-        if (m >= 60) {
-            h++
+    function secondCounter() {
+        seconds++
+        if (seconds >= 60) {
+            seconds = 0
+            return setMinAndHour();
+        } else {
+            setTimeout(secondCounter, 1000)
+            var text = hour + ':' + minutes + ':' + seconds;
+            document.getElementById('watch').innerHTML = text;
+        }
+    }
+
+    function setMinAndHour() {
+        minutes++
+            if (minutes >= 60) {
+            hour++
+            minutes = 0;
+            secondCounter();
         }
         else {
-            fastSeconds();
+            secondCounter();
         }
     }
 }
