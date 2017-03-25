@@ -8,3 +8,26 @@ body {
     font-weight: 900;
     font-size: 150px;
 }
+
+.minute, .seconds, .hour {
+    background-color: white;
+    transform-origin: bottom;
+    position: absolute
+}
+
+.seconds {
+    background-color: red;
+    width: 1px;
+    height: 100%;
+
+}
+
+.minute {
+    width: 2px;
+    height: 80%;
+}
+
+.hour {
+    width: 3px;
+    height: 60%;
+}
