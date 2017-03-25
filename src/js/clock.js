@@ -1,4 +1,4 @@
-export default function Clock() {
+export default function Clock(callback) {
     var d  = new Date();
     var hour  = d.getHours();
     var minutes  = d.getMinutes();
@@ -25,8 +25,9 @@ export default function Clock() {
             return setMinAndHour();
         } else {
             setTimeout(secondCounter, 1000)
-            var text = hour + ':' + minutes + ':' + seconds;
-            document.getElementById('watch').innerHTML = text;
+            if (callback) {
+                callback(hour, minutes, seconds);
+            }
         }
     }
 
